@@ -40,6 +40,7 @@ Whether you're juggling multiple accounts across various banks or simply want a 
 ---
 
 ### **Option 2: Build the Application from Source**
+
 If you’d prefer to build the Phar file yourself, the source files are included in the repository. Here's the directory structure:
 
 ```
@@ -65,36 +66,11 @@ If you’d prefer to build the Phar file yourself, the source files are included
 ---
 
 ### **Option 3: Automate with `make-app.sh` (Unix-based Systems)**
-A script named `make-app.sh` is provided to streamline the Phar creation and execution process. Here’s the script structure:
 
-```bash
-#!/bin/bash
-# A script to automate building and running the My-Banks application
+A script named [make-app.sh](make-app.sh) is provided to streamline the Phar creation and execution process. Here’s the script structure:
 
-# Ensure PHP is installed
-if ! command -v php &> /dev/null; then
-    echo "PHP is not installed. Please install PHP first."
-    exit 1
-fi
+    Note: You may have to uncomment & turn `Off` the `readonly` from `php ini` 
 
-# Build the Phar file
-echo "Building app.phar..."
-php build-phar.php
-```
-Note: You may have to uncomment & turn `Off` the `readonly` from `php ini` 
-
-# Make it executable
-chmod +x app.phar
-
-# Optional: Move to /usr/local/bin for global access
-if [ "$1" == "--install" ]; then
-    echo "Installing app.phar to /usr/local/bin as 'mybanks'..."
-    sudo mv app.phar /usr/local/bin/mybanks
-    echo "Run the application anywhere using the command 'mybanks'."
-else
-    echo "Run the application using './app.phar'."
-fi
-```
 
 1. **Make the Script Executable**:
    ```bash
