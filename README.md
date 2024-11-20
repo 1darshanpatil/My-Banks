@@ -80,6 +80,8 @@ fi
 # Build the Phar file
 echo "Building app.phar..."
 php build-phar.php
+```
+Note: You may have to uncomment & turn `Off` the `readonly` from `php ini` 
 
 # Make it executable
 chmod +x app.phar
