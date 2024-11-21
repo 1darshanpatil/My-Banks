@@ -1,4 +1,3 @@
-
 # **My-Banks: Simplify Family Bank Account Management**
 
 **My-Banks** is a tool designed to help you effortlessly manage and keep track of all your family’s bank accounts in one place. 
@@ -11,16 +10,49 @@ Whether you're juggling multiple accounts across various banks or simply want a 
 
 ## **How to Use**
 
-### **Option 1: Run the Prebuilt Application (`app.phar`)**
-1. **Make the File Executable**
+### **Option 1: Run the Prebuilt Application (`executable files`)**
+1. **Find the Executable Files**  
+   Locate the following files in the `executables` folder:
    ```bash
-   chmod +x app.phar
+   ├── executables
+   │   ├── unix_based_machines.php
+   │   └── windows-executable.phar
    ```
 
-2. **Run the Application**
+2. **Based on Operating System**  
+
+   - **Unix/Linux/macOS Users**:  
+     Run `unix_based_machines.php` by navigating to the folder in your terminal and executing:
+     ```bash
+     php unix_based_machines.php
+     ```
+
+   - **Windows Users**:  
+     Run `windows-executable.phar` by opening Command Prompt or PowerShell, navigating to the folder, and executing:
+     ```bash
+     php windows-executable.phar
+     ```
+
+   - Make sure PHP is installed and added to your system's PATH for the commands to work.
+
+3. **Optional: Add to Global Path**  
+   For easier access, move `app.phar` to `/usr/local/bin` (Linux/macOS) or a globally accessible directory (Windows) and rename it (e.g., `mybanks`):
    ```bash
-   ./app.phar
+   sudo mv app.phar /usr/local/bin/mybanks
    ```
+   Now, you can run the app from any directory:
+   ```bash
+   mybanks
+   ```
+
+4. **Open the Application**  
+   Once the app is running, open your web browser and navigate to:
+   ```
+   http://localhost:8000
+   ```
+
+5. **Verify Functionality**  
+   Check the interface to ensure all features are functioning as expected. You can now manage and track your family's bank accounts seamlessly.
 
 3. **Optional: Add to Global Path**
    For easier access, you can move `app.phar` to `/usr/local/bin` and rename it (e.g., `mybanks`):
@@ -45,13 +77,19 @@ If you’d prefer to build the Phar file yourself, the source files are included
 
 ```
 .
-├── build-phar.php   # Script to create app.phar
-├── engine.php       # Backend logic
-├── index.php        # Main entry point
-├── phar-stub.php    # Stub file for Phar
-├── styles.css       # Styling for the web app
-├── user_script.php  # User management script
-└── view_balances.php # Bank balance view
+├── LICENSE
+├── README.md
+├── build-phar.php
+├── engine.php
+├── executables
+│   ├── unics_based_machines.php
+│   └── windows-executable.phar
+├── index.php
+├── make-app.sh
+├── phar-stub.php
+├── styles.css
+├── user_script.php
+└── view_balances.php
 ```
 
 1. **Build the Phar**
@@ -70,9 +108,14 @@ If you’d prefer to build the Phar file yourself, the source files are included
 A script named [make-app.sh](make-app.sh) is provided to streamline the Phar creation and execution process. Here’s the script structure:
 
     Note: You may have to uncomment & turn `Off` the `readonly` from `php ini` 
-
+   
+   ```bash 
+   ;phar.readonly = On  # Original line
+   phar.readonly = Off  # Updated line
+   ```
 
 1. **Make the Script Executable**:
+   
    ```bash
    chmod +x make-app.sh
    ```
