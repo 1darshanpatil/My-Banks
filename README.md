@@ -133,6 +133,33 @@ A script named [make-app.sh](make-app.sh) is provided to streamline the Phar cre
 
 ---
 
+
+# Troubleshooting and Documentation for Brew-Installed PHP
+
+## Common Errors and Solutions for Homebrew-Installed PHP
+
+| **Error**                                        | **Cause**                                                                                 | **Solution**                                                                                     |
+|--------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| `phar.readonly => On => On`                      | `phar.readonly` is set to `On` in the Homebrew PHP configuration.                         | Update `/opt/homebrew/etc/php/8.x/php.ini` (replace `8.x` with your PHP version) and restart PHP. |
+| `chmod: app.phar: No such file or directory`     | Build failed; `.phar` file was not created.                                              | Check logs, fix build errors, and retry after cleaning up with `rm -f app.phar`.                 |
+| `Could not open input file: ./unics_based_machines.phar` | Missing execute permissions or incorrect path.                                            | Use `chmod +x` and verify the file path.                                                        |
+| `zsh: no such file or directory: ./make-app.sh`  | Script is not in the current directory.                                                  | Navigate to the correct directory (`cd <path>`) or provide the full path to the script.          |
+| `mv: rename app.phar to /usr/local/bin/mybanks: No such file or directory` | `.phar` file was not created successfully due to a build error.                           | Ensure `phar.readonly` is `Off`, clean up, and rebuild.                                          |
+| `mv: Permission denied`                          | Lack of permissions to copy `.phar` to `/usr/local/bin`.                                 | Use `sudo ./make-app.sh --install` or provide the password when prompted during the install.     |
+| `brew services restart php` fails               | PHP service is not properly installed or configured in Homebrew.                        | Reinstall PHP via Homebrew: `brew reinstall php`.                                                |
+| `PHP extensions missing`                        | Required PHP extensions (e.g., `phar`) are not enabled in the Homebrew installation.      | Check `/opt/homebrew/etc/php/8.x/php.ini` to ensure extensions are enabled.                      |
+
+## Steps for Brew-Installed PHP
+
+### 1. Verify PHP Installation
+- Check the installed PHP version and confirm Homebrew's PHP path:
+  ```bash
+  php --version
+  which php
+
+
+
+
 ## **Features**
 
 - **Account Overview**:
